@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <title>underscore</title>
+</head>
+
+<body>
+  <p>open console!!</p>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore-min.js"></script>
+  <script>
+    // each
+    console.log('------- each -------')
+    const eachFunc = (v, v2, v3) => {
+      console.log('v', v);
+      console.log('v2', v2);
+      console.log('v3', v3);
+    };
+    _.each([1, 2, 3], eachFunc);
+    _.each({ one: 1, two: 2, three: 3 }, eachFunc);
+    console.log('------- /each -------')
+
+    // map
+    console.log('------- map -------');
+    console.log(_.map([1, 2, 3], num => num * 3));
+    console.log(_.map({ one: 1, two: 2, three: 3 }, (num, key) => num * 3));
+    console.log(_.map([[1, 2], [3, 4]], _.first));
+    console.log('------- /map -------');
+
+    // reduce
+    console.log('------- reduce -------');
+    console.log(_.reduce([1, 2, 3], (memo, num) => memo + num, 0)); // => 6
+    console.log(_.reduce({ one: 1, two: 2, three: 3 }, (memo, num) => memo + num, 0)); // => 6
+    console.log('------- /reduce -------');
+
+    // rest
+    console.log('------- rest -------');
+    console.log(_.rest([5, 4, 3, 2, 1])); // => [4, 3, 2, 1]
+    console.log(_.rest([5, 4, 3, 2, 1], 2)); // => [3, 2, 1]
+    console.log('------- /rest -------');
+
+    // findWhere
+    console.log('------- findWhere -------');
+    const listForFindWhere = [
+      { name: 'soarflat', age: 28 },
+      { name: 'hira', age: 2 },
+      { name: 'hira', age: 22 }
+    ]
+    console.log(_.findWhere(listForFindWhere, { name: 'hira' })); // => {name: "hira", age: 2}
+    console.log('------- /findWhere -------');
+
+    // where
+    console.log('------- where -------');
+    const listForWhere = [
+      { name: 'soarflat', age: 28 },
+      { name: 'hira', age: 2 },
+      { name: 'hira', age: 22 }
+    ]
+    console.log(_.where(listForWhere, { name: 'hira' })); // => [{name: "hira", age: 2}, {name: "hira", age: 22}]
+    console.log('------- /where -------');
+
+    // reject（filterの逆）
+    console.log('------- reject -------');
+    console.log(_.reject([1, 2, 3, 4, 5, 6], num => num % 2 === 0)); // => [1, 3, 5]
+    console.log('------- /reject -------');
+
+    // contains
+    console.log('------- contains -------');
+    console.log(_.contains([1, 2, 3], 3)); // => true
+    console.log(_.contains({ one: 1, two: 2, three: 3 }, 2)); // => false
+    console.log('------- /contains -------');
+
+    // pluck
+    console.log('------- pluck -------');
+    const itemsForPluck = [{ name: 'moe', age: 40 }, { name: 'larry', age: 50 }, { name: 'curly', age: 60 }];
+    console.log(_.pluck(itemsForPluck, 'name')); // => ["moe", "larry", "curly"]
+    console.log('------- /pluck -------');
+
+    // max
+    console.log('------- max -------');
+    const itemsForMax = [{ name: 'moe', age: 40 }, { name: 'larry', age: 50 }, { name: 'curly', age: 60 }];
+    console.log(_.max(itemsForMax, item => item.age)); // => {name: "curly", age: 60}
+    console.log('------- /max -------');
+
+    // compact
+    console.log('------- compact -------');
+    console.log(_.compact([0, 1, false, 2, '', 3])); // => [1, 2, 3]
+    console.log('------- /compact -------');
+
+    // without
+    console.log('------- without -------');
+    console.log(_.without([1, 2, 1, 0, 3, 1, 4], 0, 1)); // => [2, 3, 4]
+    console.log('------- /without -------');
+
+    // union
+    console.log('------- union -------');
+    console.log(_.union([1, 2, 3], [101, 2, 1, 10], [2, 1])); // => [1, 2, 3, 101, 10]
+    console.log('------- /union -------');
+
+    // intersection_
+    console.log('------- intersection -------');
+    console.log(_.intersection([1, 2, 3], [101, 2, 1, 10], [2, 1])); // => [1, 2]
+    console.log('------- /intersection -------');
+
+    // difference
+    console.log('------- difference -------');
+    console.log(_.difference([1, 2, 3], [101, 2, 1, 10])); // => [3]
+    console.log('------- /difference -------');
+
+  </script>
+</body>
+
+</html>
