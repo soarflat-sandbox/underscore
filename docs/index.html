@@ -108,6 +108,36 @@
     console.log(_.difference([1, 2, 3], [101, 2, 1, 10])); // => [3]
     console.log('------- /difference -------');
 
+    // sortedIndex
+    console.log('------- sortedIndex -------');
+    console.log(_.sortedIndex([10, 20, 30, 40, 50], 35)); // => 3
+    const itemsForSortedIndex = [{ name: 'moe', age: 40 }, { name: 'curly', age: 60 }];
+    console.log(_.sortedIndex(itemsForSortedIndex, { name: 'larry', age: 50 }, 'age')); // => 1
+    console.log('------- /sortedIndex -------');
+
+    // findLastIndex
+    console.log('------- findLastIndex -------');
+    const users = [
+      { id: 1, name: 'Bob', last: 'Brown' },
+      { id: 2, name: 'Ted', last: 'White' },
+      { id: 3, name: 'Frank', last: 'James' },
+      { id: 4, name: 'Ted', last: 'Jones' }
+    ];
+    console.log(_.findLastIndex(users, { name: 'Ted' })); // => 3
+    console.log('------- /findLastIndex -------');
+
+    console.log('------- range -------');
+    console.log(_.range(10));
+    console.log(_.range(1, 11));
+    console.log(_.range(0, 30, 5));
+    console.log(_.range(0, -10, -1));
+    console.log('------- /range -------');
+
+    console.log('------- bind -------');
+    let funcForBind = function (greeting) { return `${greeting}: ${this.name}` };
+    funcForBind = _.bind(funcForBind, { name: 'moe' }, 'hi');
+    console.log(funcForBind()); // => hi: moe
+    console.log('------- /bind -------');
   </script>
 </body>
 
